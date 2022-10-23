@@ -151,15 +151,6 @@ app.post("/submit", async (req, res) =>{
   console.log(req.user.id);
   console.log(req.body.secret);
 
-//   User.findOneAndUpdate(
-//     { _id: req.user.id, $push: { secret: submittedSecret } }
-// ).catch(err => console.log(err));
-
-//   User.updateOne(
-//     { _id: req.user.id }, 
-//     { $push: { secret: submittedSecret } }
-// );
-
   User.findById(req.user.id)
   .then(foundUser => {
     foundUser.secret.push(submittedSecret);
